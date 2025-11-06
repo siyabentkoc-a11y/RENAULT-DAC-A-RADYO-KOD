@@ -1,0 +1,13 @@
+{
+  "name": "renault-radio-builder",
+  "version": "1.0.0",
+  "description": "Builds a standalone exe for Renault radio code fetcher using pkg in GitHub Actions.",
+  "main": "renault_radio_code_fetcher.js",
+  "bin": "renault_radio_code_fetcher.js",
+  "scripts": {
+    "start": "node renault_radio_code_fetcher.js"
+  },
+  "dependencies": {
+    "vm2": "^3.9.11"
+  }
+}
