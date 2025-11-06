@@ -1,9 +1,9 @@
-name: Build EXE (Windows)
+name: EXE Oluştur (Windows)
 
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:
+    branches:
+      - ana
 
 jobs:
   build:
@@ -22,10 +22,10 @@ jobs:
         run: pip install pyinstaller
 
       - name: EXE oluştur
-        run: pyinstaller --onefile renault_radio_quick.py
+        run: pyinstaller --onefile renault_radio_code_fetcher.js
 
       - name: EXE dosyasını yükle
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: renault-exe-win64
-          path: dist/renault_radio_quick.exe
+          path: dist/
