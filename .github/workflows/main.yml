@@ -2,30 +2,29 @@ name: EXE Oluştur (Windows)
 
 on:
   push:
-    branches:
-      - ana
+    branches: [ "ana" ]
 
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-      - name: Depoyu klonla
-        uses: actions/checkout@v3
+    - name: Depoyu klonla
+      uses: actions/checkout@v4
 
-      - name: Python'u kur
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
+    - name: Python'u kur
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
 
-      - name: Gerekli kütüphaneleri yükle
-        run: pip install pyinstaller
+    - name: Gerekli kütüphaneleri yükle
+      run: pip install pyinstaller
 
-      - name: EXE oluştur
-        run: pyinstaller --onefile renault_radio_code_fetcher.js
+    - name: EXE oluştur
+      run: pyinstaller --onefile renault_radio_quick.py
 
-      - name: EXE dosyasını yükle
-        uses: actions/upload-artifact@v4
-        with:
-          name: renault-exe-win64
-          path: dist/
+    - name: EXE dosyasını yükle
+      uses: actions/upload-artifact@v4
+      with:
+        name: renault-exe-win64
+        path: dist/renault_radio_quick.exe
