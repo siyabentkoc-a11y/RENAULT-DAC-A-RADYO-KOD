@@ -1,0 +1,31 @@
+name: Build EXE (Windows)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Depoyu klonla
+        uses: actions/checkout@v3
+
+      - name: Python'u kur
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Gerekli kütüphaneleri yükle
+        run: pip install pyinstaller
+
+      - name: EXE oluştur
+        run: pyinstaller --onefile renault_radio_quick.py
+
+      - name: EXE dosyasını yükle
+        uses: actions/upload-artifact@v3
+        with:
+          name: renault-exe-win64
+          path: dist/renault_radio_quick.exe
